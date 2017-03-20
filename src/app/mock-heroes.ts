@@ -1,3 +1,4 @@
+// Replaced by in-memory-data.service.ts
 import { Hero } from './shared/hero';
 
 export const HEROES: Hero[] = [

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
 
-//import { Hero } from '../shared/hero';
+// import { Hero } from '../shared/hero';
 import { HeroService } from '../hero.service';
 import { Hero } from '../shared/hero';
 
@@ -18,7 +18,7 @@ export class HeroDetailComponent implements OnInit {
   @Input()
   hero: Hero;
 
-  constructor(private heroService: HeroService, private route: ActivatedRoute, private location: Location ) { 
+  constructor(private heroService: HeroService, private route: ActivatedRoute, private location: Location ) {
 
   }
 
@@ -28,9 +28,12 @@ export class HeroDetailComponent implements OnInit {
         .subscribe(hero => this.hero = hero);
   }
 
-  goBack() : void
-  {
-      this.location.back();
+  goBack(): void {
+    this.location.back();
   }
 
+  save(): void {
+    this.heroService.update(this.hero)
+        .then(() => this.goBack());
+  }
 }
